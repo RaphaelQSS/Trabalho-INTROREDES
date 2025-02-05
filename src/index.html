@@ -7,76 +7,83 @@
     <link rel="shortcut icon" href="/img/icon.png">
     <title> SoloChat </title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Comfortaa:wght@300..700&family=Dancing+Script:wght@400..700&display=swap');
+
         body{
-    margin: 0;
-    padding-bottom: 1rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+            margin: 0;
+            padding-bottom: 1rem;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .textFont{
+            font-family: "Chakra Petch", serif;
+            font-weight: 300;
+            font-style: normal;
+        }
 
-#form{
-    position: absolute;
-    background: rgba(0, 0, 0, 0.15);
-    padding: 0.25rem;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display:flex;
-    height: 3rem;
-    box-sizing: border-box;
-    backdrop-filter: blur(10px);
-}
+        #form{
+            position: absolute;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0.25rem;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
 
-#input{
-    border: none;
-    padding: 0.1rem;
-    flex-grow: 1;
-    border-radius: 2rem;
-    margin: 0.25rem;
-}
+        #input{
+            border: none;
+            padding: 0.1rem;
+            flex-grow: 1;
+            border-radius: 2rem;
+            margin: 0.25rem;
+        }
 
-#input:focus{
-    outline: none;
-}
+        #input:focus{
+            outline: none;
+        }
 
-#form > button {
-    background: #333;
-    border: none;
-    padding: 0.1rem;
-    margin: 0.25rem;
-    border-radius: 3px;
-    outline: none;
-    color: #fff;
-}
+        #form > button {
+            background: #333;
+            border: none;
+            padding: 0.1rem;
+            margin: 0.25rem;
+            border-radius: 3px;
+            outline: none;
+            color: #fff;
+        }
 
-#messages{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+        #messages{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
 
-#messages > li {
-    padding: 0.5rem 1rem;
-}
+        #messages > li {
+            padding: 0.5rem 1rem;
+        }
 
-#messages > li:nth-child(odd)
-{
-    background: #efefef;
-}
+        #messages > li:nth-child(odd)
+        {
+            background: #efefef;
+        }
 
-#cabeca
-{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-}
+        #cabeca
+        {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     </style>
 </head>
 <div class="textFont">
     <body>
         <div id="topColor">
             <header id="cabeca">
-                <p id="topStyle"> SoloChat</p>
+                <p id="topStyle"> SoloChat </p><img src="../img/icon.png" alt="">
                 
                 <select name="Chat" id="chatgroup" class="selectBox">
                     <option value="g1" selected="selected"> Grupo 1</option>

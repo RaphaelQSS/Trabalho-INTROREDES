@@ -1,7 +1,7 @@
 import express, { Application } from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
-
+ 
 class App{
     private app: Application
     private http: http.Server

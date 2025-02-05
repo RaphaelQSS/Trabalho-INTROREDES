@@ -6,6 +6,7 @@ class App{
     private app: Application
     private http: http.Server
     private io: Server
+    
     constructor()
     {
         this.app = express()
@@ -22,9 +23,12 @@ class App{
     {
         this.io.on('connection', (socket)=>{
         console.log('user connected:', socket.id)
-        socket.on('message', (msg)=>{
-            this.io.emit('message', (msg))
-            console.log("")
+        socket.on('join', (room)=>{
+            socket.join(room)
+        });
+        socket.on('message', ({activeChat, msg}) =>{
+            this.io.to(activeChat).emit('message', msg)
+            console.log("Active Chat", activeChat, "- Message:", msg)
             })
         })
     }

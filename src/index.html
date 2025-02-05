@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <title> Documento </title>
+    <link rel="stylesheet" type="text/css" href="./serverstyle.css">
+    <title> TomChat </title>
     <style>
         body{
     margin: 0;
@@ -61,25 +61,60 @@
 {
     background: #efefef;
 }
+
+#cabeca
+{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
     </style>
 </head>
-<body>
-    <ul id="messages">
-        <li> Texto</li>
-    </ul>
-    <form id="form" action="">
-        <input id="input" autocomplete="off"> <button> Send </button>
-    </form>
+<div class="textFont">
+    <body>
+            <header id="cabeca">
+                <p class="topMenu"> Chats</p>
+                <select name="Chat" id="chatgroup">
+                    <option value="g1" selected="selected"> Grupo 1</option>
+                    <option value="g2"> Grupo 2</option>
+                    <option value="g3"> Grupo 3</option>
+                </select>
+            </header>
+            <ul id="messages">
+
+            </ul>
+            <form id="form" action="">
+                <input id="input" autocomplete="off"> <button> Send </button>
+            </form>
+    </body>
+</div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
+
+        const chatgroup = document.getElementById('chatgroup');
         const message = document.getElementById('messages');
         const input = document.getElementById('input');
-        
+
+        var activeChat = chatgroup.options[chatgroup.selectedIndex].value;
+
+        socket.emit('join', activeChat)
+   
+        chatgroup.addEventListener('click', function(){
+            if(activeChat != chatgroup.options[chatgroup.selectedIndex].value)
+            {
+                activeChat = chatgroup.options[chatgroup.selectedIndex].value;
+                socket.emit('join', activeChat);
+                message.innerHTML = '';
+            }
+        })
         document.addEventListener('submit', (e)=>{
             e.preventDefault();
             if(input.value){
-                socket.emit('message', input.value)
+                var msg = input.value;
+                socket.emit('message', {activeChat, msg} )
                 input.value = '';
             }
         })
@@ -87,6 +122,7 @@
         socket.on('message', (msg)=>{
             const li = document.createElement('li');
             li.textContent = msg;
+            message.appendChild(li);
         })
     </script>
 </body>

@@ -30,9 +30,9 @@ class App{
         socket.leave(room)
         });
         
-        socket.on('message', ({activeChat, msg}) =>{
-            this.io.to(activeChat).emit('message', msg)
-            console.log("Active Chat", activeChat, "- Message:", msg)
+        socket.on('message', ({activeChat, msg, user, username}) =>{
+            this.io.to(activeChat).emit('message', {activeChat, msg, user, username})
+            console.log("Active Chat", activeChat, "- Message:", msg, "- Socket Messager: ", user, "- Username: ", username)
             })
         })
     }
